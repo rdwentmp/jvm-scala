@@ -17,4 +17,12 @@ object Functions  extends App {
   }
 
   println(aRepeatedFunction("hello", 3))
+
+  def aFunctionWithSideEffects(aString: String): Unit = println(aString)
+
+  def aBigFunction(n: Int): Int = {
+    def aSmallerFunction(a: Int, b: Int): Int = a + b
+
+    aSmallerFunction(n, n-1)
+  }
 }
