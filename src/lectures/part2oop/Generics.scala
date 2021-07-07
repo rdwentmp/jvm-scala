@@ -44,7 +44,7 @@ object Generics extends App {
   val cage = new  Cage(new Dog)
 
   class Car
-  // generic type needs prpper bounced type
+  // generic type needs proper bounced type
   //  val newCage = new Cage(new Car)
 
   // expand MyList to be generic
