@@ -52,8 +52,18 @@ object Exceptions extends App {
         - MatchCalculationException for division by 0
    */
   // OOM
-//  val array = Array.ofDim(Int.MaxValue)
+  //  val array = Array.ofDim(Int.MaxValue)
 
+  // SO
+//  def infinite: Int = 1 + infinite
+//  val noLimit = infinite
 
+  object PocketCalculator {
+    def add(x: Int, y: Int) = {
+      val result = x + y
+      result
+    }
+  }
+  println(PocketCalculator.add(Int.MaxValue, 10))
 
 }
