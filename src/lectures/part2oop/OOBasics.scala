@@ -47,8 +47,8 @@ class Person(name: String, val age: Int = 0) {
    - isWrittenBy (author)
    - copy (new year of release) = new instance of Novel
 */
-class Writer(firstName: String, surnane: String, val year: Int) {
-  def fullName: String = firstName + " " + surnane
+class Writer(firstName: String, surname: String, val year: Int) {
+  def fullName: String = firstName + " " + surname
   }
 
 class Novel(name: String, year: Int, author: Writer) {
