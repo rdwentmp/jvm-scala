@@ -1,8 +1,8 @@
 package lectures.part2oop
 
-import playground.{PrinceCharming, Cindrela}
+import playground.Cindrela
 import java.util.Date
-import java.sql.{Date =>SqlDate}
+import java.sql.{Date => SqlDate}
 
 object PackagingAndImports extends App {
 
