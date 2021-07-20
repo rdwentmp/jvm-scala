@@ -15,12 +15,34 @@ object WhatsAFunction extends App {
   }
   println(stringToIntConverter("3") + 4)
 
-  val adder: ((Int, Int) => Int)= new Function2[Int, Int, Int] {
+  val adder: ((Int, Int) => Int) = new Function2[Int, Int, Int] {
     override def apply(a: Int, b: Int): Int = a + b
   }
   // Function types Function2[A, B, R] === (A,B) => R
 
   // ALL SCALA FUNCTIONS ARE OBJECTS
+  /*
+  1. a function which takes 2 strings and concatenates them
+  2. transform the MyPredicate and My Transformer into function types
+  3. define a function which takes and int and returns another function which takes an int and returns an int
+     - what's the type of this function
+     - how to do it
+   */
+
+
+    def concatenator: (String, String) => String = new Function2[String, String, String] {
+      override def apply(a: String, b: String): String = a + b
+    }
+      println(concatenator("Hello ","Scala"))
+
+  // Function1[Int, Function1[Int, Int]
+  val superAdder: Function1[Int, Function1[Int, Int]] = new Function1[Int, Function1[Int, Int]] {
+    override def apply(x: Int): Function1[Int, Int] = new Function[Int, Int] {
+      override def apply(y: Int): Int = x + y
+    }
+  }
+  val adder3 = superAdder(3)
+  println(adder3(4))
 }
 
 trait MyFunction[A, B] {
