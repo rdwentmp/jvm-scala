@@ -43,6 +43,7 @@ object WhatsAFunction extends App {
   }
   val adder3 = superAdder(3)
   println(adder3(4))
+  println(superAdder(3)(4)) // curried function
 }
 
 trait MyFunction[A, B] {
