@@ -105,5 +105,6 @@ object ListTest extends App {
   println(listOfIntegers.flatMap(elem => new Cons(elem, new Cons[Int](elem + 1, Empty))).toString)
 
   println(cloneListOfIntegers == listOfIntegers)
+
 }
 
