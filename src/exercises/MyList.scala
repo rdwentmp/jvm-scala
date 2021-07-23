@@ -156,6 +156,5 @@ object ListTest extends App {
 
   println(listOfIntegers.fold(0)(_ + _))
 
-
 }
 
