@@ -15,4 +15,13 @@ object Sequences extends App {
   aRange.foreach(println)
 
   (1 to 10).foreach(x => println("hello"))
+
+  // lists
+  val aList = List(1,2,3)
+  val prepended = 42 +: aList :+ 45
+  println(prepended)
+
+  val apples5 = List.fill(5)("apple")
+  println(apples5)
+  println(aList.mkString("-|-"))
 }
