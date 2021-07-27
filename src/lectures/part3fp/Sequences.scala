@@ -1,5 +1,9 @@
 package lectures.part3fp
 
+
+import java.util
+import scala.util.Random
+
 object Sequences extends App {
 
   // Seq
@@ -37,4 +41,25 @@ object Sequences extends App {
   // arrays and seq
   val numberSeq: Seq[Int] = numbers // implicit conversion
   println(numberSeq)
+
+  // vectors
+  val vector: Vector[Int] = Vector(1,2,3)
+  println(vector)
+
+  // vectors vs lists
+
+  val maxRuns = 1000
+  val maxCapacity = 1000000
+
+  def getWriteTime(collection: Seq[Int]): Double = {
+    val r = new Random
+    val times = for {
+      it <- to maxRuns
+    } yield {
+      val currentTime = System.nanoTime()
+      collection.updated(r.nextInt(maxCapacity), 0)
+      System.nanoTime() - currentTime
+    }
+    times.sum * 1.0 / maxRuns
+  }
 }
