@@ -54,7 +54,7 @@ object Sequences extends App {
   def getWriteTime(collection: Seq[Int]): Double = {
     val r = new Random
     val times = for {
-      it <- to maxRuns
+      it <- 1 to maxRuns
     } yield {
       val currentTime = System.nanoTime()
       collection.updated(r.nextInt(maxCapacity), 0)
@@ -62,4 +62,15 @@ object Sequences extends App {
     }
     times.sum * 1.0 / maxRuns
   }
+
+  val numbersList = (1 to maxCapacity).toList
+  val numbersVector = (1 to maxCapacity).toVector
+  // keeps reference to tail
+  // updating an element in a middle takes loong
+  println(getWriteTime(numbersList))
+  // depth of the tree is small
+  // needs to replace an entire 32-element chunk
+  println(getWriteTime(numbersVector))
+
+
 }
