@@ -12,8 +12,29 @@ object TuplesAndMaps extends App {
   // Maps - keys -> value
   val aMap: Map[String, Int] = Map()
 
-  val phonebook = Map(("Jim", 555), "Mark" -> 698)
+  val phonebook = Map(("Jim", 555), "Mark" -> 698).withDefaultValue(-1)
   // a -> b is sugar for (a,b)
   println(phonebook)
+
+
+  // map ops
+  println(phonebook.contains("Jim"))
+  println(phonebook("Jim"))
+  println(phonebook("Bla"))
+
+  // add a pairing
+  val newPairing = "Mary" -> 678234567
+  val newPhonebook = phonebook + newPairing
+  println(newPhonebook)
+
+  // functionals on maps
+  // map, flatMap, filter
+
+  println(phonebook.map(pair => pair._1.toLowerCase -> pair._2))
+
+  // filterKeys
+  println(phonebook.filterKeys(x => x.startsWith("J")))
+  // mapValues
+  println(phonebook.mapValues(number => "+48 " + number))
 
 }
