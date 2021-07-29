@@ -102,5 +102,15 @@ object TuplesAndMaps extends App {
     if (!network.contains(person)) 0
     else network(person).size
 
-  println(nFriends(testNet, "Bobr"))
+  println(nFriends(testNet, "Bob"))
+
+  def mostFriends(network: Map[String, Set[String]]): String =
+    network.maxBy(pair => pair._2.size)._1
+
+  println(mostFriends(testNet))
+
+  def nPeopleWithNoFriends(network: Map[String, Set[String]]): Int =
+    network.filterKeys(k => network(k).isEmpty).size
+
+  println(nPeopleWithNoFriends(testNet))
 }
