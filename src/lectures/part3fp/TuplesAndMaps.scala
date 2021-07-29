@@ -16,7 +16,6 @@ object TuplesAndMaps extends App {
   // a -> b is sugar for (a,b)
   println(phonebook)
 
-
   // map ops
   println(phonebook.contains("Jim"))
   println(phonebook("Jim"))
@@ -36,5 +35,13 @@ object TuplesAndMaps extends App {
   println(phonebook.filterKeys(x => x.startsWith("J")))
   // mapValues
   println(phonebook.mapValues(number => "+48 " + number))
+
+  // conversions to other collections
+  println(phonebook.toList)
+  println(List(("Daniel", 555)).toMap)
+
+  val names = List("Bob", "James", "Angela", "Mary", "Daniel", "Jim")
+  println(names.groupBy(name => name.charAt(0)))
+
 
 }
