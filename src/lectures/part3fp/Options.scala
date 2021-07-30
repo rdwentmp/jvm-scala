@@ -1,5 +1,7 @@
 package lectures.part3fp
 
+import scala.util.Random
+
 object Options extends App {
 
   val myFirstOption: Option[Int] = Some(4)
@@ -24,6 +26,46 @@ object Options extends App {
 
   val betterChainedResult = betterUnsafeMethod() orElse betterBackupMethod()
 
+  // functions on Options
+  println(myFirstOption.isEmpty)
+  println(myFirstOption.get) // UNSAFE - do not use this
 
+  // map, flatMap, filter
+  println(myFirstOption.map(_ * 2))
+  println(myFirstOption.filter(x => x > 10))
+  println(myFirstOption.flatMap(x => Option(x * 10)))
 
+  // for-comprehensions
+  /*
+
+   */
+  val config: Map[String, String] = Map(
+    // fetched from elsewhere
+    "host" -> "176.45.36.1",
+    "port" -> "80"
+  )
+
+  class Connection {
+    def connect = "Connected"
+  }
+  object  Connection {
+    val random = new Random((System.nanoTime()))
+    def apply(host: String, port: String): Option[Connection] =
+      if (random.nextBoolean()) Some(new Connection)
+      else None
+  }
+
+  // try to establish the connection, if so - print the connect method
+  val host = config.get("host")
+  val port = config.get("port")
+  /*
+    if ( h != null)
+      if (p != null)
+        return Connection.apply(h,p)
+    return null
+   */
+  val connection = host.flatMap(h => port.flatMap(p => Connection.apply(h, p)))
+  val connectionStatus = connection.map(c => c.connect)
+  println(connectionStatus)
+  connectionStatus.foreach(println)
 }
