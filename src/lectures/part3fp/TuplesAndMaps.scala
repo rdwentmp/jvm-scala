@@ -128,4 +128,5 @@ object TuplesAndMaps extends App {
     bfs(b, Set(), network(a) + a)
   }
   println(socialConnection(testNet, "Mary", "Jim"))
+  println(socialConnection(network, "Mary", "Bob"))
 }
